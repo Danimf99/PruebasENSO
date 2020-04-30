@@ -1,0 +1,245 @@
+[
+    {
+        "id": 1,
+        "nombre": "Pollo con patatas",
+        "descripcion": "Es un pollo muy muy rico",
+        "concesionaria": "Albor",
+        "categoriaPlato": 1,
+        "tipoCocina": "otras",
+        "ingredientes": [
+            {
+                "nombreI": "pollo",
+                "proteinas": 47,
+                "carbo": 23,
+                "grasas": 65,
+                "calorias": 1200,
+                "alergeno": "false"
+            },
+            {
+                "nombreI": "patata",
+                "proteinas": 37,
+                "carbo": 63,
+                "grasas": 25,
+                "calorias": 600,
+                "alergeno": "true"
+            }
+        ]
+
+    },
+    {
+        "id": 2,
+        "nombre": "Ensalada",
+        "descripcion": "Es una ensalada muy muy rico",
+        "concesionaria": "Albor",
+        "categoriaPlato": 1,
+        "tipoCocina": "otras",
+        "ingredientes": [
+            {
+                "nombreI": "en",
+                "proteinas": 17,
+                "carbo": 23,
+                "grasas": 5,
+                "calorias": 120,
+                "alergeno": "false"
+            },
+            {
+                "nombreI": "salada",
+                "proteinas": 27,
+                "carbo": 13,
+                "grasas": 35,
+                "calorias": 200,
+                "alergeno": "false"
+            }
+        ]
+
+    },
+    {
+        "id": 3,
+        "nombre": "Pasta",
+        "descripcion": "Es una ensalada muy muy rico",
+        "concesionaria": "Albor",
+        "categoriaPlato": 1,
+        "tipoCocina": "otras",
+        "ingredientes": [
+            {
+                "nombreI": "en",
+                "proteinas": 17,
+                "carbo": 23,
+                "grasas": 5,
+                "calorias": 120,
+                "alergeno": "false"
+            },
+            {
+                "nombreI": "salada",
+                "proteinas": 27,
+                "carbo": 13,
+                "grasas": 35,
+                "calorias": 200,
+                "alergeno": "false"
+            }
+        ]
+
+    },
+    {
+        "id": 4,
+        "nombre": "Croquetas",
+        "descripcion": "Es una ensalada muy muy rico",
+        "concesionaria": "Albor",
+        "categoriaPlato": 2,
+        "tipoCocina": "otras",
+        "ingredientes": [
+            {
+                "nombreI": "en",
+                "proteinas": 17,
+                "carbo": 23,
+                "grasas": 5,
+                "calorias": 120,
+                "alergeno": "false"
+            },
+            {
+                "nombreI": "salada",
+                "proteinas": 27,
+                "carbo": 13,
+                "grasas": 35,
+                "calorias": 200,
+                "alergeno": "false"
+            }
+        ]
+
+    },
+    {
+        "id": 5,
+        "nombre": "Sandwitch",
+        "descripcion": "Es una ensalada muy muy rico",
+        "concesionaria": "Albor",
+        "categoriaPlato": 2,
+        "tipoCocina": "otras",
+        "ingredientes": [
+            {
+                "nombreI": "en",
+                "proteinas": 17,
+                "carbo": 23,
+                "grasas": 5,
+                "calorias": 120,
+                "alergeno": "false"
+            },
+            {
+                "nombreI": "salada",
+                "proteinas": 27,
+                "carbo": 13,
+                "grasas": 35,
+                "calorias": 200,
+                "alergeno": "false"
+            }
+        ]
+
+    },
+    {
+        "id": 6,
+        "nombre": "Arroz",
+        "descripcion": "Es una ensalada muy muy rico",
+        "concesionaria": "Albor",
+        "categoriaPlato": 2,
+        "tipoCocina": "otras",
+        "ingredientes": [
+            {
+                "nombreI": "en",
+                "proteinas": 17,
+                "carbo": 23,
+                "grasas": 5,
+                "calorias": 120,
+                "alergeno": "false"
+            },
+            {
+                "nombreI": "salada",
+                "proteinas": 27,
+                "carbo": 13,
+                "grasas": 35,
+                "calorias": 200,
+                "alergeno": "false"
+            }
+        ]
+
+    },
+    {
+        "id": 7,
+        "nombre": "Cafe",
+        "descripcion": "Es una ensalada muy muy rico",
+        "concesionaria": "Albor",
+        "categoriaPlato": 3,
+        "tipoCocina": "otras",
+        "ingredientes": [
+            {
+                "nombreI": "en",
+                "proteinas": 17,
+                "carbo": 23,
+                "grasas": 5,
+                "calorias": 120,
+                "alergeno": "false"
+            },
+            {
+                "nombreI": "salada",
+                "proteinas": 27,
+                "carbo": 13,
+                "grasas": 35,
+                "calorias": 200,
+                "alergeno": "false"
+            }
+        ]
+
+    },
+    {
+        "id": 8,
+        "nombre": "Pastel",
+        "descripcion": "Es una ensalada muy muy rico",
+        "concesionaria": "Albor",
+        "categoriaPlato": 3,
+        "tipoCocina": "otras",
+        "ingredientes": [
+            {
+                "nombreI": "en",
+                "proteinas": 17,
+                "carbo": 23,
+                "grasas": 5,
+                "calorias": 120,
+                "alergeno": "false"
+            },
+            {
+                "nombreI": "salada",
+                "proteinas": 27,
+                "carbo": 13,
+                "grasas": 35,
+                "calorias": 200,
+                "alergeno": "false"
+            }
+        ]
+
+    },
+    {
+        "id": 9,
+        "nombre": "Fruta",
+        "descripcion": "Es una ensalada muy muy rico",
+        "concesionaria": "Albor",
+        "categoriaPlato": 3,
+        "tipoCocina": "otras",
+        "ingredientes": [
+            {
+                "nombreI": "en",
+                "proteinas": 17,
+                "carbo": 23,
+                "grasas": 5,
+                "calorias": 120,
+                "alergeno": "false"
+            },
+            {
+                "nombreI": "salada",
+                "proteinas": 27,
+                "carbo": 13,
+                "grasas": 35,
+                "calorias": 200,
+                "alergeno": "false"
+            }
+        ]
+
+    }
+]
