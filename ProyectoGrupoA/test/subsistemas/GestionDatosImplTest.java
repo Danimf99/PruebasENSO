@@ -82,7 +82,7 @@ class GestionDatosImplTest {
 			factura.setBandeja(null);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por vale menor que 0" );
+			},"Se esperaba excepción por bandeja = null" );
 		}
 		
 		@DisplayName("Almacenar Factura - G3")
@@ -92,7 +92,7 @@ class GestionDatosImplTest {
 			factura.setBandeja(-1);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por vale menor que 0" );
+			},"Se esperaba excepción por idBandeja menor que 0" );
 		}
 		
 		@DisplayName("Almacenar Factura - G4")
@@ -103,7 +103,7 @@ class GestionDatosImplTest {
 			factura.setBandeja(3);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por vale menor que 0" );
+			},"Se esperaba excepción por idPlato1 menor que 0" );
 		}
 		
 		@DisplayName("Almacenar Factura - G5")
@@ -114,7 +114,7 @@ class GestionDatosImplTest {
 			factura.setBandeja(4);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por vale menor que 0" );
+			},"Se esperaba excepción por idPlato2 menor que 0" );
 		}
 		
 		@DisplayName("Almacenar Factura - G6")
@@ -125,7 +125,7 @@ class GestionDatosImplTest {
 			factura.setBandeja(5);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por vale menor que 0" );
+			},"Se esperaba excepción por idPostre menor que 0" );
 		}
 		
 		@DisplayName("Almacenar Factura - G7")
@@ -136,7 +136,7 @@ class GestionDatosImplTest {
 			factura.setBandeja(6);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por vale menor que 0" );
+			},"Se esperaba excepción por bebida=null" );
 		}
 		
 		
