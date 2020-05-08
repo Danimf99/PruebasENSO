@@ -2,6 +2,9 @@ package subsistemas;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,17 +14,20 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import bean.Factura;
+import bean.Menu;
+import bean.Plato;
 
 class GestionDatosImplTest {
 
 	Factura factura;
+	Menu menu;
 	GestionDatosImpl gestor;
 	int vale=0;
 	int idFactura=0;
 
-	@DisplayName("Test de clases válidas")
+	@DisplayName("Test de clases validas")
 	@Nested
-	class PruebasVálidas {
+	class PruebasValidas {
 		@BeforeEach
 		void setUp() throws Exception {
 
@@ -29,12 +35,44 @@ class GestionDatosImplTest {
 			gestor = new GestionDatosImpl();
 			vale++;
 			idFactura++;
+			
+			//Atributos para menu
+			Plato plato1 = new Plato(1, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			Plato plato2 = new Plato(2, "pollO", "pollolaksd", null, 2, null, null);
+			Plato plato3 = new Plato(3, "tarta", "tartasijdk", null, 3, null, null);
+			ArrayList<Plato> primeros = new ArrayList();
+			primeros.add(plato1);
+			primeros.add(plato2);
+			primeros.add(plato3);
+			
+			Plato plato4 = new Plato(4, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			Plato plato5 = new Plato(5, "pollO", "pollolaksd", null, 2, null, null);
+			Plato plato6 = new Plato(6, "tarta", "tartasijdk", null, 3, null, null);
+			ArrayList<Plato> segundos = new ArrayList();
+			segundos.add(plato4);
+			segundos.add(plato5);
+			segundos.add(plato6);
+			
+			Plato plato7 = new Plato(7, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			Plato plato8 = new Plato(8, "pollO", "pollolaksd", null, 2, null, null);
+			Plato plato9 = new Plato(9, "tarta", "tartasijdk", null, 3, null, null);
+			ArrayList<Plato> postres = new ArrayList();
+			postres.add(plato7);
+			postres.add(plato8);
+			postres.add(plato9);
+			
+			int id = (int) System.currentTimeMillis();
+			
+			menu = new Menu(id, new Date(), primeros, segundos, postres);
 		}
 
 		@AfterEach
 		void tearDown() throws Exception {
 			factura = null;
 			gestor = null;
+			
+			//Operaciones de almacenar menu
+			menu = null;
 
 		}
 
@@ -45,16 +83,54 @@ class GestionDatosImplTest {
 				gestor.almacenarFactura(factura);
 			}, "Ha habido una excepcion");
 		}
+		
+		@DisplayName("Almacenar Menu - G0")
+		@Test
+		void testAlmacenarMenu() {
+			Assertions.assertDoesNotThrow(() -> {
+				gestor.almacenarMenu(menu);
+			}, "Ha habido una excepcion");
+		}
 	}
 
-	@DisplayName("Test de clases no válidas")
+	@DisplayName("Test de clases no validas")
 	@Nested
-	class PruebasNoVálidas{
+	class PruebasNoValidas{
 		
 		@BeforeEach
 		void setUp() throws Exception {
 			factura = new Factura(1, 1, 0, 0, 0, "agua");
 			gestor = new GestionDatosImpl();
+			
+			
+			//Atributos para almacenar menu
+			Plato plato1 = new Plato(1, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			Plato plato2 = new Plato(2, "pollO", "pollolaksd", null, 2, null, null);
+			Plato plato3 = new Plato(3, "tarta", "tartasijdk", null, 3, null, null);
+			ArrayList<Plato> primeros = new ArrayList();
+			primeros.add(plato1);
+			primeros.add(plato2);
+			primeros.add(plato3);
+			
+			Plato plato4 = new Plato(4, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			Plato plato5 = new Plato(5, "pollO", "pollolaksd", null, 2, null, null);
+			Plato plato6 = new Plato(6, "tarta", "tartasijdk", null, 3, null, null);
+			ArrayList<Plato> segundos = new ArrayList();
+			segundos.add(plato4);
+			segundos.add(plato5);
+			segundos.add(plato6);
+			
+			Plato plato7 = new Plato(7, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			Plato plato8 = new Plato(8, "pollO", "pollolaksd", null, 2, null, null);
+			Plato plato9 = new Plato(9, "tarta", "tartasijdk", null, 3, null, null);
+			ArrayList<Plato> postres = new ArrayList();
+			postres.add(plato7);
+			postres.add(plato8);
+			postres.add(plato9);
+			
+			int id = (int) System.currentTimeMillis();
+			
+			menu = new Menu(id, new Date(), primeros, segundos, postres);
 			
 		}
 
@@ -62,6 +138,10 @@ class GestionDatosImplTest {
 		void tearDown() throws Exception {
 			factura = null;
 			gestor = null;
+			
+			
+			//Almacenar menu
+			menu = null;
 
 		}
 
@@ -72,7 +152,7 @@ class GestionDatosImplTest {
 			factura.setBandeja(1);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por vale menor que 0" );
+			},"Se esperaba excepciï¿½n por vale menor que 0" );
 		}
 		
 		@DisplayName("Almacenar Factura - G2")
@@ -82,7 +162,7 @@ class GestionDatosImplTest {
 			factura.setBandeja(null);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por bandeja = null" );
+			},"Se esperaba excepciï¿½n por bandeja = null" );
 		}
 		
 		@DisplayName("Almacenar Factura - G3")
@@ -92,7 +172,7 @@ class GestionDatosImplTest {
 			factura.setBandeja(-1);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por idBandeja menor que 0" );
+			},"Se esperaba excepciï¿½n por idBandeja menor que 0" );
 		}
 		
 		@DisplayName("Almacenar Factura - G4")
@@ -103,7 +183,7 @@ class GestionDatosImplTest {
 			factura.setBandeja(3);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por idPlato1 menor que 0" );
+			},"Se esperaba excepciï¿½n por idPlato1 menor que 0" );
 		}
 		
 		@DisplayName("Almacenar Factura - G5")
@@ -114,7 +194,7 @@ class GestionDatosImplTest {
 			factura.setBandeja(4);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por idPlato2 menor que 0" );
+			},"Se esperaba excepciï¿½n por idPlato2 menor que 0" );
 		}
 		
 		@DisplayName("Almacenar Factura - G6")
@@ -125,7 +205,7 @@ class GestionDatosImplTest {
 			factura.setBandeja(5);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por idPostre menor que 0" );
+			},"Se esperaba excepciï¿½n por idPostre menor que 0" );
 		}
 		
 		@DisplayName("Almacenar Factura - G7")
@@ -136,7 +216,120 @@ class GestionDatosImplTest {
 			factura.setBandeja(6);
 			Assertions.assertThrows(Exception.class,() -> {
 				gestor.almacenarFactura(factura);
-			},"Se esperaba excepción por bebida=null" );
+			},"Se esperaba excepciï¿½n por bebida=null" );
+		}
+		
+		
+		
+		@DisplayName("Almacenar Menu - G1")
+		@Test
+		void almacenarMenuNull() {
+			menu = null;
+			Assertions.assertThrows(Exception.class,() -> {
+				gestor.almacenarMenu(menu);
+			},"Se esperaba excepcion por menu=null" );
+		}
+		
+		@DisplayName("Almacenar Menu - G2")
+		@Test
+		void almacenarMenuIdNegativo() {
+			menu.setId(-1);
+			Assertions.assertThrows(Exception.class,() -> {
+				gestor.almacenarMenu(menu);
+			},"Se esperaba excepcion por id negativo" );
+		}
+		
+		@DisplayName("Almacenar Menu - G3")
+		@Test
+		void almacenarMenuFechaNull() {
+			menu.setFecha(null);
+			Assertions.assertThrows(Exception.class,() -> {
+				gestor.almacenarMenu(menu);
+			},"Se esperaba excepcion por fecha=null" );
+		}
+		
+		@DisplayName("Almacenar Menu - G4")
+		@Test
+		void almacenarMenuPrimerosNull() {
+			menu.setPrimeros(null);
+			Assertions.assertThrows(Exception.class,() -> {
+				gestor.almacenarMenu(menu);
+			},"Se esperaba excepcion por primeros=null" );
+		}
+		
+		@DisplayName("Almacenar Menu - G5")
+		@Test
+		void almacenarMenuMasPrimeros() {
+			Plato platoAux = new Plato(7, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			menu.getPrimeros().add(platoAux);
+			Assertions.assertThrows(Exception.class,() -> {
+				gestor.almacenarMenu(menu);
+			},"Se esperaba excepcion por numero de primeros mayor que 3" );
+		}
+		
+		@DisplayName("Almacenar Menu - G6")
+		@Test
+		void almacenarMenuMenosPrimeros() {
+			menu.getPrimeros().remove(0);
+			Assertions.assertThrows(Exception.class,() -> {
+				gestor.almacenarMenu(menu);
+			},"Se esperaba excepcion por numero de primeros menor que 3" );
+		}
+		
+		@DisplayName("Almacenar Menu - G7")
+		@Test
+		void almacenarMenuSegundosNull() {
+			menu.setSegundos(null);
+			Assertions.assertThrows(Exception.class,() -> {
+				gestor.almacenarMenu(menu);
+			},"Se esperaba excepcion por segundos=null" );
+		}
+		
+		@DisplayName("Almacenar Menu - G8")
+		@Test
+		void almacenarMenuMasSegundos() {
+			Plato platoAux = new Plato(2, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			menu.getSegundos().add(platoAux);
+			Assertions.assertThrows(Exception.class,() -> {
+				gestor.almacenarMenu(menu);
+			},"Se esperaba excepcion por numero de segundos mayor que 3" );
+		}
+		
+		@DisplayName("Almacenar Menu - G9")
+		@Test
+		void almacenarMenuMenosSegundos() {
+			menu.getSegundos().remove(0);
+			Assertions.assertThrows(Exception.class,() -> {
+				gestor.almacenarMenu(menu);
+			},"Se esperaba excepcion por numero de segundos menor que 3" );
+		}
+		
+		@DisplayName("Almacenar Menu - G10")
+		@Test
+		void almacenarMenuPostressNull() {
+			menu.setPostres(null);
+			Assertions.assertThrows(Exception.class,() -> {
+				gestor.almacenarMenu(menu);
+			},"Se esperaba excepcion por postres=null" );
+		}
+		
+		@DisplayName("Almacenar Menu - G11")
+		@Test
+		void almacenarMenuMasPostres() {
+			Plato platoAux = new Plato(4, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			menu.getPostres().add(platoAux);
+			Assertions.assertThrows(Exception.class,() -> {
+				gestor.almacenarMenu(menu);
+			},"Se esperaba excepcion por numero de postres mayor que 3" );
+		}
+		
+		@DisplayName("Almacenar Menu - G12")
+		@Test
+		void almacenarMenuMenosPostres() {
+			menu.getPostres().remove(0);
+			Assertions.assertThrows(Exception.class,() -> {
+				gestor.almacenarMenu(menu);
+			},"Se esperaba excepcion por numero de postres menor que 3" );
 		}
 		
 		
