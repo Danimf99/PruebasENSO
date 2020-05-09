@@ -2,6 +2,8 @@ package subsistemas;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,6 +15,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import bean.BaseEstadistica;
 import bean.Factura;
 import bean.Menu;
 import bean.Plato;
@@ -90,6 +93,32 @@ class GestionDatosImplTest {
 			Assertions.assertDoesNotThrow(() -> {
 				gestor.almacenarMenu(menu);
 			}, "Ha habido una excepcion");
+		}
+		
+		@DisplayName("Almacenar Base Estadistica - CP8")
+		@Test
+		void testAlmacenarBaseEstadistica() {
+			ArrayList<Integer> valoraciones = new ArrayList();
+			valoraciones.add(5);
+			valoraciones.add(3);
+			valoraciones.add(9);
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+			Date   recogida;
+			Date   entrega;
+			try {
+				recogida  = format.parse ( "2020-03-30T12:50:05+0200" );
+				entrega   = format.parse ( "2020-03-30T12:30:05+0200" );
+				
+				BaseEstadistica base = new BaseEstadistica(5,entrega, recogida,"Daniel",valoraciones);
+				
+				Assertions.assertDoesNotThrow(() -> {
+					gestor.almacenarBaseEstadistica(base);
+				}, "Ha habido una excepcion");
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			
 		}
 	}
 
