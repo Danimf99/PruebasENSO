@@ -110,5 +110,46 @@ class GestionMenusTest {
 			}, "Se esperaba excepcion por Menu fuera de rango");
 		}
 	}
+	
+	
+	@DisplayName("Test de obtenerPlatos y addPlato")
+	@Nested
+	class PruebasSubmetodos{
+		@BeforeEach
+		void setUp() throws Exception {
+			gestorDatos = new GestionDatosImpl();
+			gestorMenus = new GestionMenus(gestorDatos);
+			//Creamos el menu para este dia
+			gestorMenus.crearMenu("Albor",1);
+			gestorMenus.escogerPlatos(2, 1, 1);
+			gestorMenus.escogerPlatos(3, 1, 1);
+			gestorMenus.escogerPlatos(4, 1, 2);
+			gestorMenus.escogerPlatos(5, 1, 2);
+			gestorMenus.escogerPlatos(6, 1, 2);
+			gestorMenus.escogerPlatos(7, 1, 3);
+			gestorMenus.escogerPlatos(8, 1, 3);
+			gestorMenus.escogerPlatos(9, 1, 3);
+			
+		}
+		
+		@DisplayName("Test valido de obtenerPlatos - CEP6")
+		@Test
+		void testObtenerPlatos() {
+			assertDoesNotThrow(()->{gestorDatos.obtenerPlatos("Albos");
+			}, "Ha habido una excepcion");
+		}
+		
+		@DisplayName("Test valido de addPlato - CEP")
+		@Test
+		void testAddPlato() {
+			//En escoger platos dejar el primero sin determinar para insertarlo ahora
+			Plato plato1 = new Plato(1, "tortilla", "Plato original de Marsella", "Albos", 1, "francesa", null);
+			assertDoesNotThrow(()->{gestorMenus.obtenerMenuDelDia().addPlato(plato1);
+			}, "Ha habido una excepcion");
+		}
+		
+		
+	}
+	
 
 }
