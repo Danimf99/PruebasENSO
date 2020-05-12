@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import bean.BaseEstadistica;
@@ -28,6 +29,7 @@ class GestionDatosImplTest {
 	int vale = 0;
 	int idFactura = 0;
 
+	@Tag("CajaNegra")
 	@DisplayName("Test de clases validas")
 	@Nested
 	class PruebasValidas {
@@ -128,6 +130,7 @@ class GestionDatosImplTest {
 		}
 	}
 
+	@Tag("CajaNegra")
 	@DisplayName("Test de clases no validas")
 	@Nested
 	class PruebasNoValidas {

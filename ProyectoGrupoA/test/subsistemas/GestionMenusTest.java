@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import bean.Plato;
@@ -26,6 +27,7 @@ class GestionMenusTest {
 	GestionMenus gestorMenus;
 	GestionDatosImpl gestorDatos;
 	
+	@Tag("CajaNegra")
 	@DisplayName("Test de clases validas")
 	@Nested
 	class PruebasValidas{
@@ -51,7 +53,7 @@ class GestionMenusTest {
 		}
 	}
 	
-	
+	@Tag("CajaNegra")
 	@DisplayName("Test de clases no validas")
 	@Nested
 	class PruebasNoValidas{

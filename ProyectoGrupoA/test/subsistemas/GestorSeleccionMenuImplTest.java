@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import bean.Plato;
@@ -17,6 +18,7 @@ class GestorSeleccionMenuImplTest {
 	GestorSeleccionMenuImpl smenu;
 	GestionMenus gestorMenus;
 	GestionDatosImpl gestorDatos;
+	
 	@AfterEach
 	void tearDown() throws Exception {
 		gestorDatos = null;
@@ -40,6 +42,7 @@ class GestorSeleccionMenuImplTest {
 		gestorMenus.escogerPlatos(7, 1, 3);
 	}
 
+	@Tag("CajaNegra")
 	@DisplayName("Seleccionar menú - CP9")
 	@Test
 	void testSeleccionMenu() {
