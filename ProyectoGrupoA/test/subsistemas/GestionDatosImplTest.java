@@ -128,11 +128,18 @@ class GestionDatosImplTest {
 			}	
 		}
 		
-		@DisplayName("Obtener Bases - CP54")
+		@DisplayName("Obtener Bases - CP47")
 		@Test
 		void testObtenerBases() {
 			ArrayList<BaseEstadistica> bases = new ArrayList<>();
 			assertEquals(bases.getClass(), gestor.obtenerBases().getClass(), "Se esperaba un array de BaseEstadistica");
+		}
+		
+		@DisplayName("Obtener Platos - CP48")
+		@Test
+		void testObtenerPlatos() {
+			ArrayList<BaseEstadistica> platos = new ArrayList<>();
+			assertEquals(platos.getClass(), gestor.obtenerPlatos().getClass(), "Se esperaba un array de BaseEstadistica");
 		}
 		
 	}
