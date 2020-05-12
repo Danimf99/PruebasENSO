@@ -125,9 +125,16 @@ class GestionDatosImplTest {
 				}, "Ha habido una excepcion");
 			} catch (ParseException e) {
 				e.printStackTrace();
-			}
-
+			}	
 		}
+		
+		@DisplayName("Obtener Bases - CP54")
+		@Test
+		void testObtenerBases() {
+			ArrayList<BaseEstadistica> bases = new ArrayList<>();
+			assertEquals(bases.getClass(), gestor.obtenerBases().getClass(), "Se esperaba un array de BaseEstadistica");
+		}
+		
 	}
 
 	@Tag("CajaNegra")
