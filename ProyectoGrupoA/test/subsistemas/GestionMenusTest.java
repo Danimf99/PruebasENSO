@@ -11,13 +11,14 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import bean.Menu;
 import bean.Plato;
 import interfaces.ItfSensores;
 
 class GestionMenusTest {
 	
 	/**
-	 * Codigo de las pruebas de caja negra asociadas al método escoger plato.
+	 * Codigo de las pruebas de caja negra asociadas al mï¿½todo escoger plato.
 	 * @author Manuel Leston
 	 *
 	 */
@@ -50,6 +51,21 @@ class GestionMenusTest {
 		@Test
 		void testEscogerPlatos() {
 			Assertions.assertDoesNotThrow(()->{gestorMenus.escogerPlatos(1, 1, 1);}, "Ha habido una excepcion");
+		}
+		
+		@DisplayName("Obtener Menu - CP44")
+		@Test
+		void testObtenerMenu() {
+			Menu[] menus = new Menu[5];
+			assertEquals(menus.getClass(), gestorMenus.obtenerMenus().getClass(), "Se esperaba un array de Menus");
+		}
+		
+		@DisplayName("Obtener Menu DÃ­a - CP45")
+		@Test
+		void testObtenerMenuDia() {
+			Assertions.assertDoesNotThrow(() -> {
+				gestorMenus.obtenerMenuDelDia();
+			}, "Ha habido una excepcion");
 		}
 	}
 	
