@@ -46,7 +46,7 @@ class GestionMenusTest {
 			smenu = null;
 		}
 		
-		@DisplayName("Escoger platos - CEP0")
+		@DisplayName("Escoger platos - CP10")
 		@Test
 		void testEscogerPlatos() {
 			Assertions.assertDoesNotThrow(()->{gestorMenus.escogerPlatos(1, 1, 1);}, "Ha habido una excepcion");
@@ -72,7 +72,7 @@ class GestionMenusTest {
 			smenu = null;
 		}
 		
-		@DisplayName("Escoger platos (Tipo fuera de rango) - CEP1")
+		@DisplayName("Escoger platos (Tipo fuera de rango) - CP11")
 		@Test
 		void testEscogerPlatoTipo() {
 			assertThrows(Exception.class, ()->{
@@ -80,7 +80,7 @@ class GestionMenusTest {
 			}, "Se esperaba excepcion por tipo fuera de rango");
 		}
 		
-		@DisplayName("Escoger platos (Tipo con valor negativo) - CEP2")
+		@DisplayName("Escoger platos (Tipo con valor negativo) - CP12")
 		@Test
 		void testEscogerPlatoTipoNegativo() {
 			assertThrows(Exception.class, ()->{
@@ -88,7 +88,7 @@ class GestionMenusTest {
 			}, "Se esperaba excepcion por tipo negativo");
 		}
 		
-		@DisplayName("Escoger platos (ID con valor negativo) - CEP3")
+		@DisplayName("Escoger platos (ID con valor negativo) - CP13")
 		@Test
 		void testEscogerPlatoIDNegativo() {
 			assertThrows(Exception.class, ()->{
@@ -96,7 +96,7 @@ class GestionMenusTest {
 			}, "Se esperaba excepcion por ID negativo");
 		}
 		
-		@DisplayName("Escoger platos (Menu con valor negativo) - CEP4")
+		@DisplayName("Escoger platos (Menu con valor negativo) - CP14")
 		@Test
 		void testEscogerPlatoMenuNegativo() {
 			assertThrows(Exception.class, ()->{
@@ -104,7 +104,7 @@ class GestionMenusTest {
 			}, "Se esperaba excepcion por Menu negativo");
 		}
 		
-		@DisplayName("Escoger platos (Menu con valor fuera de rango) - CEP5")
+		@DisplayName("Escoger platos (Menu con valor fuera de rango) - CP15")
 		@Test
 		void testEscogerPlatoMenu() {
 			assertThrows(Exception.class, ()->{
@@ -134,18 +134,18 @@ class GestionMenusTest {
 			
 		}
 		
-		@DisplayName("Test valido de obtenerPlatos - CEP6")
+		@DisplayName("Test valido de obtenerPlatos - CP16")
 		@Test
 		void testObtenerPlatos() {
 			assertDoesNotThrow(()->{gestorDatos.obtenerPlatos("Albos");
 			}, "Ha habido una excepcion");
 		}
 		
-		@DisplayName("Test valido de addPlato - CEP")
+		@DisplayName("Test valido de addPlato - CP17")
 		@Test
 		void testAddPlato() {
 			//En escoger platos dejar el primero sin determinar para insertarlo ahora
-			Plato plato1 = new Plato(1, "tortilla", "Plato original de Marsella", "Albos", 1, "francesa", null);
+			Plato plato1 = new Plato(1, "tortilla", "Plato original de Marsella", "Albor", 1, "francesa", null);
 			assertDoesNotThrow(()->{gestorMenus.obtenerMenuDelDia().addPlato(plato1);
 			}, "Ha habido una excepcion");
 		}

@@ -34,21 +34,21 @@ class SensoresImplTest {
 			sensores = null;
 		}
 
-		@DisplayName("ObtenerBandeja - S0")
+		@DisplayName("ObtenerBandeja - CP26")
 		@Test
 		void obtenerBandeja() {
 			assertEquals(Bandeja.class, sensores.obtenerBandeja().getClass(),"Se esperaba una clase de tipo bandeja");
 			
 		}
 		
-		@DisplayName("ObtenerVale - S1")
+		@DisplayName("ObtenerVale - CP27")
 		@Test
 		void obtenerVale() {
 			assertEquals(Integer.class, sensores.obtenerVale().getClass(),"Se esperaba una clase de tipo entero");
 			
 		}
 		
-		@DisplayName("Terminar Consumicion - S2")
+		@DisplayName("Terminar Consumicion - CP29")
 		@Test
 		void terminarConsumicion() {
 			assertDoesNotThrow(()->{sensores.terminarConsumicion(new Bandeja(0,new ArrayList<>(),"",new Date()));}, "Ha habido una excepcion");	

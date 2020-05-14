@@ -81,7 +81,7 @@ class GestionDatosImplTest {
 
 		}
 
-		@DisplayName("Almacenar Factura - G0")
+		@DisplayName("Almacenar Factura - CP18")
 		@Test
 		void test() {
 			Assertions.assertDoesNotThrow(() -> {
@@ -89,7 +89,7 @@ class GestionDatosImplTest {
 			}, "Ha habido una excepcion");
 		}
 
-		@DisplayName("Almacenar Menu - G0")
+		@DisplayName("Almacenar Menu - CP30")
 		@Test
 		void testAlmacenarMenu() {
 			Assertions.assertDoesNotThrow(() -> {
@@ -97,7 +97,7 @@ class GestionDatosImplTest {
 			}, "Ha habido una excepcion");
 		}
 
-		@DisplayName("Obtener Facturas - G1")
+		@DisplayName("Obtener Facturas - CP28")
 		@Test
 		void testObtenerFacturas() {
 			ArrayList<Factura> facturas = new ArrayList<>();
@@ -195,7 +195,7 @@ class GestionDatosImplTest {
 
 		}
 
-		@DisplayName("Almacenar Factura - G1")
+		@DisplayName("Almacenar Factura - CP19")
 		@Test
 		void almacenarFacturaIdValeIncorrecto() {
 			factura.setVale(-1);
@@ -205,7 +205,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepci�n por vale menor que 0");
 		}
 
-		@DisplayName("Almacenar Factura - G2")
+		@DisplayName("Almacenar Factura - CP20")
 		@Test
 		void almacenarFacturaBandejaNull() {
 			factura.setVale(1);
@@ -215,7 +215,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepci�n por bandeja = null");
 		}
 
-		@DisplayName("Almacenar Factura - G3")
+		@DisplayName("Almacenar Factura - CP21")
 		@Test
 		void almacenarFacturaIdBandejaIncorreecto() {
 			factura.setVale(2);
@@ -225,7 +225,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepci�n por idBandeja menor que 0");
 		}
 
-		@DisplayName("Almacenar Factura - G4")
+		@DisplayName("Almacenar Factura - CP22")
 		@Test
 		void almacenarFacturaIdPrimerPlatoIncorrecto() {
 			factura.setPlato1(-1);
@@ -236,7 +236,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepci�n por idPlato1 menor que 0");
 		}
 
-		@DisplayName("Almacenar Factura - G5")
+		@DisplayName("Almacenar Factura - CP23")
 		@Test
 		void almacenarFacturaIdSegundoPlatoIncorrecto() {
 			factura.setPlato2(-1);
@@ -247,7 +247,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepci�n por idPlato2 menor que 0");
 		}
 
-		@DisplayName("Almacenar Factura - G6")
+		@DisplayName("Almacenar Factura - CP24")
 		@Test
 		void almacenarFacturaIdPostrePlatoIncorrecto() {
 			factura.setPostre(-1);
@@ -258,7 +258,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepci�n por idPostre menor que 0");
 		}
 
-		@DisplayName("Almacenar Factura - G7")
+		@DisplayName("Almacenar Factura -CP25")
 		@Test
 		void almacenarFacturaBebidaNull() {
 			factura.setBebida(null);
@@ -269,7 +269,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepci�n por bebida=null");
 		}
 
-		@DisplayName("Almacenar Menu - G1")
+		@DisplayName("Almacenar Menu - CP31")
 		@Test
 		void almacenarMenuNull() {
 			menu = null;
@@ -278,7 +278,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepcion por menu=null");
 		}
 
-		@DisplayName("Almacenar Menu - G2")
+		@DisplayName("Almacenar Menu - CP32")
 		@Test
 		void almacenarMenuIdNegativo() {
 			menu.setId(-1);
@@ -287,7 +287,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepcion por id negativo");
 		}
 
-		@DisplayName("Almacenar Menu - G3")
+		@DisplayName("Almacenar Menu - CP33")
 		@Test
 		void almacenarMenuFechaNull() {
 			menu.setFecha(null);
@@ -296,7 +296,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepcion por fecha=null");
 		}
 
-		@DisplayName("Almacenar Menu - G4")
+		@DisplayName("Almacenar Menu - CP34")
 		@Test
 		void almacenarMenuPrimerosNull() {
 			menu.setPrimeros(null);
@@ -305,7 +305,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepcion por primeros=null");
 		}
 
-		@DisplayName("Almacenar Menu - G5")
+		@DisplayName("Almacenar Menu - CP35")
 		@Test
 		void almacenarMenuMasPrimeros() {
 			Plato platoAux = new Plato(7, "ensalada", "Ensalada rica rica", null, 1, null, null);
@@ -315,7 +315,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepcion por numero de primeros mayor que 3");
 		}
 
-		@DisplayName("Almacenar Menu - G6")
+		@DisplayName("Almacenar Menu - CP36")
 		@Test
 		void almacenarMenuMenosPrimeros() {
 			menu.getPrimeros().remove(0);
@@ -324,7 +324,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepcion por numero de primeros menor que 3");
 		}
 
-		@DisplayName("Almacenar Menu - G7")
+		@DisplayName("Almacenar Menu - CP37")
 		@Test
 		void almacenarMenuSegundosNull() {
 			menu.setSegundos(null);
@@ -333,7 +333,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepcion por segundos=null");
 		}
 
-		@DisplayName("Almacenar Menu - G8")
+		@DisplayName("Almacenar Menu - CP38")
 		@Test
 		void almacenarMenuMasSegundos() {
 			Plato platoAux = new Plato(2, "ensalada", "Ensalada rica rica", null, 1, null, null);
@@ -343,7 +343,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepcion por numero de segundos mayor que 3");
 		}
 
-		@DisplayName("Almacenar Menu - G9")
+		@DisplayName("Almacenar Menu - CP39")
 		@Test
 		void almacenarMenuMenosSegundos() {
 			menu.getSegundos().remove(0);
@@ -352,7 +352,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepcion por numero de segundos menor que 3");
 		}
 
-		@DisplayName("Almacenar Menu - G10")
+		@DisplayName("Almacenar Menu - CP40")
 		@Test
 		void almacenarMenuPostressNull() {
 			menu.setPostres(null);
@@ -361,7 +361,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepcion por postres=null");
 		}
 
-		@DisplayName("Almacenar Menu - G11")
+		@DisplayName("Almacenar Menu - CP41")
 		@Test
 		void almacenarMenuMasPostres() {
 			Plato platoAux = new Plato(4, "ensalada", "Ensalada rica rica", null, 1, null, null);
@@ -371,7 +371,7 @@ class GestionDatosImplTest {
 			}, "Se esperaba excepcion por numero de postres mayor que 3");
 		}
 
-		@DisplayName("Almacenar Menu - G12")
+		@DisplayName("Almacenar Menu - CP42")
 		@Test
 		void almacenarMenuMenosPostres() {
 			menu.getPostres().remove(0);
