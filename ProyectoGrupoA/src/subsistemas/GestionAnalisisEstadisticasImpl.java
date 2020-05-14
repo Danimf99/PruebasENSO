@@ -13,6 +13,12 @@ import bean.Plato;
 import interfaces.ItfGestorAnalisisEstadisticas;
 
 public class GestionAnalisisEstadisticasImpl implements ItfGestorAnalisisEstadisticas {
+	
+	private GestionDatosImpl gestionDatos;
+	
+	public void GestionAnalisisEstadisticasImpl() {
+		gestionDatos = new GestionDatosImpl();
+	}
 
 	@Override
 	public Float obtenerTiempoMedioComida() {
@@ -124,8 +130,8 @@ public class GestionAnalisisEstadisticasImpl implements ItfGestorAnalisisEstadis
 					valoracionPlato.merge(idPlatos.get(i), valoraciones.get(i), Integer::sum);
 				}
 			} catch (NullPointerException e) {
-				// Al almacenar platos de bandejas inexistentes más adelante se malforman los datos,
-				// Este trycatch sería innecesario si el sistema estuviera implementado de verdad
+				// Al almacenar platos de bandejas inexistentes mï¿½s adelante se malforman los datos,
+				// Este trycatch serï¿½a innecesario si el sistema estuviera implementado de verdad
 			}
 		}
 		
@@ -147,8 +153,8 @@ public class GestionAnalisisEstadisticasImpl implements ItfGestorAnalisisEstadis
 	@Override
 	public Plato obtenerPlatoPeorValorado() {
 		Plato plato = null;
-		Integer valoracionMasBaja = 2147483647; // valor máximo int
-		GestionDatosImpl gestionDatos = new GestionDatosImpl(); 
+		Integer valoracionMasBaja = 2147483647; // valor mï¿½ximo int
+		//GestionDatosImpl gestionDatos = new GestionDatosImpl(); 
 		ArrayList<BaseEstadistica> bases = gestionDatos.obtenerBases();
 		ArrayList<Factura> facturas = gestionDatos.obtenerFacturas();
 		ArrayList<Plato> platos = gestionDatos.obtenerPlatos();
@@ -178,8 +184,8 @@ public class GestionAnalisisEstadisticasImpl implements ItfGestorAnalisisEstadis
 					valoracionPlato.merge(idPlatos.get(i), valoraciones.get(i), Integer::sum);
 				}
 			} catch (NullPointerException e) {
-				// Al almacenar platos de bandejas inexistentes más adelante se malforman los datos,
-				// Este trycatch sería innecesario si el sistema estuviera implementado de verdad
+				// Al almacenar platos de bandejas inexistentes mï¿½s adelante se malforman los datos,
+				// Este trycatch serï¿½a innecesario si el sistema estuviera implementado de verdad
 			}
 		}
 		
@@ -292,7 +298,7 @@ public class GestionAnalisisEstadisticasImpl implements ItfGestorAnalisisEstadis
 		
 		Calendar diaActual = Calendar.getInstance();
 		
-		// Ojo cambiar por el año, día del año y hora actual
+		// Ojo cambiar por el aï¿½o, dï¿½a del aï¿½o y hora actual
 		diaActual.set(Calendar.YEAR, 2020);
 		diaActual.set(Calendar.DAY_OF_YEAR, 117);
 		diaActual.set(Calendar.HOUR_OF_DAY, 18);
