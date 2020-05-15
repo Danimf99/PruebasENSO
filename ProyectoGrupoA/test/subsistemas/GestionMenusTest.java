@@ -222,7 +222,7 @@ class GestionMenusTest {
 		
 		@DisplayName("Crear Menu - CP57")
 		@Test
-		void testCaminoDosCrearMenu() {
+		void testCaminoTresCrearMenu() {
 			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
 			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
 			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
@@ -240,7 +240,7 @@ class GestionMenusTest {
 		
 		@DisplayName("Crear Menu - CP58")
 		@Test
-		void testCaminoTresCrearMenu() {
+		void testCaminoCuatroCrearMenu() {
 			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
 			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
 			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
@@ -258,7 +258,7 @@ class GestionMenusTest {
 		
 		@DisplayName("Crear Menu - CP59")
 		@Test
-		void testCaminoCuatroMenu() {
+		void testCaminoCincoMenu() {
 			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
 			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
 			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
@@ -283,7 +283,7 @@ class GestionMenusTest {
 		
 		@DisplayName("Crear Menu - CP60")
 		@Test
-		void testCaminoCincoMenu() {
+		void testCaminoSeisMenu() {
 			
 			Mockito.when(datos.obtenerPlatos("Solpor")).thenReturn(new ArrayList<>());
 			
