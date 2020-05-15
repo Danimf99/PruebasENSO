@@ -22,7 +22,7 @@ import interfaces.ItfSensores;
 class GestionMenusTest {
 	
 	/**
-	 * Codigo de las pruebas de caja negra asociadas al mï¿½todo escoger plato.
+	 * Codigo de las pruebas de caja negra asociadas al metodo escoger plato.
 	 * @author Manuel Leston
 	 *
 	 */
@@ -178,24 +178,24 @@ class GestionMenusTest {
 	@Nested
 	class PruebasCajaBlanca{
 		
-		GestionDatosImpl datos;
-		GestionMenus menu;
-		
 		@BeforeEach
-		void setup() {
-			datos = Mockito.mock(GestionDatosImpl.class);
-			menu = new GestionMenus(datos);
+		void setUp() throws Exception {
+			gestorDatos = new GestionDatosImpl();
+			gestorMenus = new GestionMenus(gestorDatos);
+			//Creamos el menu para este dia
+			gestorMenus.crearMenu("Albor",1);
 		}
 		
 		@AfterEach
 		void tearDown() throws Exception {
-			datos = null;
-			menu = null;
+			gestorDatos = null;
+			gestorMenus = null;
+			smenu = null;
 		}
 		
 		@DisplayName("Crear Menu - CP55")
 		@Test
-		void testCaminoUnoCrearMenu() {
+		void testCaminoUnoEscogerPlato() {
 			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
 			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
 			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
@@ -206,95 +206,18 @@ class GestionMenusTest {
 			pruebaPlato.add(plato2);
 			pruebaPlato.add(plato3);
 			
-			Mockito.when(datos.obtenerPlatos("Solpor")).thenReturn(new ArrayList<>(pruebaPlato));
+			Mockito.when(gestorDatos.obtenerPlatos("Solpor")).thenReturn(new ArrayList<>(pruebaPlato));
 			
 			Assertions.assertAll(()->{
 				Assertions.assertDoesNotThrow(()->{
-					platos.addAll(menu.crearMenu("Solpor", 2));
+					gestorMenus.escogerPlatos(1, 1, 1);
 				});
-				Assertions.assertEquals(plato1, platos.get(0), "El primer plato es diferente");
-				Assertions.assertEquals(plato2, platos.get(1), "El segundo plato es diferente");
-				Assertions.assertEquals(plato3, platos.get(2), "El tercer plato es diferente");
 			});
 			
 		}
 	
 		
-		@DisplayName("Crear Menu - CP57")
-		@Test
-		void testCaminoTresCrearMenu() {
-			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
-			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
-			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
-			
-			Mockito.when(datos.obtenerPlatos("Solpor")).thenReturn(new ArrayList<>(Arrays.asList(plato1,plato2,plato3)));
-			
-			Assertions.assertAll(()->{
-				Exception e = Assertions.assertThrows(Exception.class, ()->{
-					menu.crearMenu("Solpor", 6);
-				}, "No se ha lanzado una excepcion");
-				Assertions.assertEquals("El numero de dia introducido no es válido",e.getMessage(), "El mensaje de la excepcion lanzada no es el esperado");
-			});
-			
-		}
 		
-		@DisplayName("Crear Menu - CP58")
-		@Test
-		void testCaminoCuatroCrearMenu() {
-			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
-			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
-			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
-			
-			Mockito.when(datos.obtenerPlatos("Solpor")).thenReturn(new ArrayList<>(Arrays.asList(plato1,plato2,plato3)));
-			
-			Assertions.assertAll(()->{
-				Exception e = Assertions.assertThrows(Exception.class, ()->{
-					menu.crearMenu("Solpor", -2);
-				}, "No se ha lanzado una excepcion");
-				Assertions.assertEquals("El numero de dia introducido no es válido",e.getMessage(), "El mensaje de la excepcion lanzada no es el esperado");
-			});
-			
-		}
-		
-		@DisplayName("Crear Menu - CP59")
-		@Test
-		void testCaminoCincoMenu() {
-			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
-			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
-			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
-			
-			Mockito.when(datos.obtenerPlatos("Solpor")).thenReturn(new ArrayList<>(Arrays.asList(plato1,plato2,plato3)));
-			//Creamos primero un menú para ese día
-			try {
-				menu.crearMenu("Solpor", 3);
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-			//ahora comprobamos que no nos deja crear otro menú para ese día
-			Assertions.assertAll(()->{
-				Exception e = Assertions.assertThrows(Exception.class, ()->{
-					menu.crearMenu("Solpor", 3);
-				}, "No se ha lanzado una excepcion");
-				Assertions.assertEquals("Ya existe un menú para esa fecha, no se permiten cambios",e.getMessage(), "El mensaje de la excepcion lanzada no es el esperado");
-			});
-			
-			
-		}
-		
-		@DisplayName("Crear Menu - CP60")
-		@Test
-		void testCaminoSeisMenu() {
-			
-			Mockito.when(datos.obtenerPlatos("Solpor")).thenReturn(new ArrayList<>());
-			
-			Assertions.assertAll(()->{
-				Exception e = Assertions.assertThrows(Exception.class, ()->{
-					menu.crearMenu("Solpor", 3);
-				}, "No se ha lanzado una excepcion");
-				Assertions.assertEquals("Esa concesionaria aun no tiene platos",e.getMessage(), "El mensaje de la excepcion lanzada no es el esperado");
-			});
-			
-		}
 	}
 	
 
