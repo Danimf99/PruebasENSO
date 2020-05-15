@@ -64,7 +64,7 @@ class GestionMenusTest {
 			assertEquals(menus.getClass(), gestorMenus.obtenerMenus().getClass(), "Se esperaba un array de Menus");
 		}
 		
-		@DisplayName("Obtener Menu Día - CP45")
+		@DisplayName("Obtener Menu Dia - CP45")
 		@Test
 		void testObtenerMenuDia() {
 			Assertions.assertDoesNotThrow(() -> {
