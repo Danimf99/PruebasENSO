@@ -184,6 +184,16 @@ class GestionMenusTest {
 			gestorMenus = new GestionMenus(gestorDatos);
 			//Creamos el menu para este dia
 			gestorMenus.crearMenu("Albor",1);
+			
+			//Creamos el menu para este dia
+			gestorMenus.escogerPlatos(2, 1, 1);
+			gestorMenus.escogerPlatos(3, 1, 1);
+			gestorMenus.escogerPlatos(4, 1, 2);
+			gestorMenus.escogerPlatos(5, 1, 2);
+			gestorMenus.escogerPlatos(6, 1, 2);
+			gestorMenus.escogerPlatos(7, 1, 3);
+			gestorMenus.escogerPlatos(8, 1, 3);
+			gestorMenus.escogerPlatos(9, 1, 3);
 		}
 		
 		@AfterEach
@@ -193,7 +203,7 @@ class GestionMenusTest {
 			smenu = null;
 		}
 		
-		@DisplayName("Crear Menu - CP55")
+		@DisplayName("Test escogerPlato (CB-Camino 1) - CP69")
 		@Test
 		void testCaminoUnoEscogerPlato() {
 			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
@@ -210,7 +220,101 @@ class GestionMenusTest {
 			
 			Assertions.assertAll(()->{
 				Assertions.assertDoesNotThrow(()->{
+					gestorMenus.escogerPlatos(1, 1, 23);
+				});
+			});
+			
+		}
+		
+		@DisplayName("Test escogerPlato (CB-Camino 2) - CP70")
+		@Test
+		void testCaminoDosEscogerPlato() {
+			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
+			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
+			
+			ArrayList<Plato> platos = new ArrayList<>();
+			ArrayList<Plato> pruebaPlato = new ArrayList<>();
+			pruebaPlato.add(plato1);
+			pruebaPlato.add(plato2);
+			pruebaPlato.add(plato3);
+			
+			Mockito.when(gestorDatos.obtenerPlatos("Solpor")).thenReturn(new ArrayList<>(pruebaPlato));
+			
+			Assertions.assertAll(()->{
+				Assertions.assertDoesNotThrow(()->{
+					gestorMenus.escogerPlatos(4, 1, 3);
+				});
+			});
+			
+		}
+		
+		
+		@DisplayName("Test escogerPlato (CB-Camino 3) - CP71")
+		@Test
+		void testCaminoTresEscogerPlato() {
+			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
+			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
+			
+			ArrayList<Plato> platos = new ArrayList<>();
+			ArrayList<Plato> pruebaPlato = new ArrayList<>();
+			pruebaPlato.add(plato1);
+			pruebaPlato.add(plato2);
+			pruebaPlato.add(plato3);
+			
+			Mockito.when(gestorDatos.obtenerPlatos("Solpor")).thenReturn(new ArrayList<>(pruebaPlato));
+			
+			Assertions.assertAll(()->{
+				Assertions.assertDoesNotThrow(()->{
+					gestorMenus.escogerPlatos(1, 1, 3);
+				});
+			});
+			
+		}
+		
+		
+		@DisplayName("Test escogerPlato (CB-Camino 4) - CP72")
+		@Test
+		void testCaminoCuatroEscogerPlato() {
+			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
+			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
+			
+			ArrayList<Plato> platos = new ArrayList<>();
+			ArrayList<Plato> pruebaPlato = new ArrayList<>();
+			pruebaPlato.add(plato1);
+			pruebaPlato.add(plato2);
+			pruebaPlato.add(plato3);
+			
+			Mockito.when(gestorDatos.obtenerPlatos("Albor")).thenReturn(new ArrayList<>(pruebaPlato));
+			
+			Assertions.assertAll(()->{
+				Assertions.assertDoesNotThrow(()->{
 					gestorMenus.escogerPlatos(1, 1, 1);
+				});
+			});
+			
+		}
+		
+		@DisplayName("Test escogerPlato (CB-Camino 5) - CP73")
+		@Test
+		void testCaminCincoEscogerPlato() {
+			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
+			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
+			
+			ArrayList<Plato> platos = new ArrayList<>();
+			ArrayList<Plato> pruebaPlato = new ArrayList<>();
+			pruebaPlato.add(plato1);
+			pruebaPlato.add(plato2);
+			pruebaPlato.add(plato3);
+			
+			Mockito.when(gestorDatos.obtenerPlatos("Albor")).thenReturn(new ArrayList<>(pruebaPlato));
+			
+			Assertions.assertAll(()->{
+				Assertions.assertDoesNotThrow(()->{
+					gestorMenus.escogerPlatos(3, 1, 1);
 				});
 			});
 			
