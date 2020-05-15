@@ -45,7 +45,11 @@ class GestionAnalisisEstadisticasImplTest {
 			analisisEstadisticas = null;
 
 		}
-
+		/**
+		 * Pruebas de obtener plato mejor valorado
+		 * @author Nicolas Mandianes
+		 *
+		 */
 		@DisplayName("Obtener Plato Mejor Valorado - CP46")
 		@Test
 		void testObtenerPlatoMejorValorado() {
@@ -64,6 +68,7 @@ class GestionAnalisisEstadisticasImplTest {
 		}
 		
 	}
+	
 	
 	@Tag("CajaBlanca")
 	@DisplayName("Test de clases validas")
@@ -91,7 +96,11 @@ class GestionAnalisisEstadisticasImplTest {
 			gestorEst = null;
 			gestorDatos = null;
 		}
-		
+		/**
+		 * Pruebas para obtener lato peor valorado
+		 * @author Alba Martínez
+		 *
+		 */
 		@DisplayName("Obtener plato peor valorado - Camino 1 - CP74")
 		@Test
 		void testCaminoUnoPeorPlato(){
