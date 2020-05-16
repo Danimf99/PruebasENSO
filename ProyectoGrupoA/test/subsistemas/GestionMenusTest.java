@@ -183,6 +183,7 @@ class GestionMenusTest {
 			gestorDatos = Mockito.mock(GestionDatosImpl.class);
 			gestorMenus = new GestionMenus(gestorDatos);
 			//Creamos el menu para este dia
+			
 		}
 		
 		@AfterEach
@@ -195,22 +196,22 @@ class GestionMenusTest {
 		@DisplayName("Test escogerPlato (CB-Camino 1) - CP69")
 		@Test
 		void testCaminoUnoEscogerPlato() {
-			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
-			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
-			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
+			//Creamos el menu para este dia
+			try {
+				gestorMenus.crearMenu("Solpor",1);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
-			ArrayList<Plato> platos = new ArrayList<>();
-			ArrayList<Plato> pruebaPlato = new ArrayList<>();
-			pruebaPlato.add(plato1);
-			pruebaPlato.add(plato2);
-			pruebaPlato.add(plato3);
+			//Mockito.when(gestorMenus.obtenerMenuDelDia()).thenReturn(new Menu(1, null, new ArrayList<>(),new ArrayList<>(),new ArrayList<>()));
 			
-			Mockito.when(gestorDatos.obtenerPlatos("Solpor")).thenReturn(new ArrayList<>(pruebaPlato));
 			
 			Assertions.assertAll(()->{
-				Assertions.assertDoesNotThrow(()->{
-					gestorMenus.escogerPlatos(1, 1, 23);
-				});
+				Exception e = Assertions.assertThrows(Exception.class, ()->{
+					gestorMenus.escogerPlatos(1, 1, 10);
+				}, "No se ha lanzado una excepcion");
+				Assertions.assertEquals("Ese plato no existe",e.getMessage(), "El mensaje de la excepcion lanzada no es el esperado");
 			});
 			
 		}
@@ -218,18 +219,6 @@ class GestionMenusTest {
 		@DisplayName("Test escogerPlato (CB-Camino 2) - CP70")
 		@Test
 		void testCaminoDosEscogerPlato() {
-			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
-			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
-			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
-			
-			ArrayList<Plato> platos = new ArrayList<>();
-			ArrayList<Plato> pruebaPlato = new ArrayList<>();
-			pruebaPlato.add(plato1);
-			pruebaPlato.add(plato2);
-			pruebaPlato.add(plato3);
-			
-			Mockito.when(gestorDatos.obtenerPlatos("Solpor")).thenReturn(new ArrayList<>(pruebaPlato));
-			
 			Assertions.assertAll(()->{
 				Assertions.assertDoesNotThrow(()->{
 					gestorMenus.escogerPlatos(4, 1, 3);
@@ -242,18 +231,6 @@ class GestionMenusTest {
 		@DisplayName("Test escogerPlato (CB-Camino 3) - CP71")
 		@Test
 		void testCaminoTresEscogerPlato() {
-			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
-			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
-			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
-			
-			ArrayList<Plato> platos = new ArrayList<>();
-			ArrayList<Plato> pruebaPlato = new ArrayList<>();
-			pruebaPlato.add(plato1);
-			pruebaPlato.add(plato2);
-			pruebaPlato.add(plato3);
-			
-			Mockito.when(gestorDatos.obtenerPlatos("Solpor")).thenReturn(new ArrayList<>(pruebaPlato));
-			
 			Assertions.assertAll(()->{
 				Assertions.assertDoesNotThrow(()->{
 					gestorMenus.escogerPlatos(1, 1, 3);
@@ -266,7 +243,7 @@ class GestionMenusTest {
 		@DisplayName("Test escogerPlato (CB-Camino 4) - CP72")
 		@Test
 		void testCaminoCuatroEscogerPlato() {
-			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
+			/*Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
 			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
 			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
 			
@@ -277,7 +254,7 @@ class GestionMenusTest {
 			pruebaPlato.add(plato3);
 			
 			Mockito.when(gestorDatos.obtenerPlatos("Albor")).thenReturn(new ArrayList<>(pruebaPlato));
-			
+			*/
 			Assertions.assertAll(()->{
 				Assertions.assertDoesNotThrow(()->{
 					gestorMenus.escogerPlatos(1, 1, 1);
@@ -289,18 +266,6 @@ class GestionMenusTest {
 		@DisplayName("Test escogerPlato (CB-Camino 5) - CP73")
 		@Test
 		void testCaminCincoEscogerPlato() {
-			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
-			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
-			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
-			
-			ArrayList<Plato> platos = new ArrayList<>();
-			ArrayList<Plato> pruebaPlato = new ArrayList<>();
-			pruebaPlato.add(plato1);
-			pruebaPlato.add(plato2);
-			pruebaPlato.add(plato3);
-			
-			Mockito.when(gestorDatos.obtenerPlatos("Albor")).thenReturn(new ArrayList<>(pruebaPlato));
-			
 			Assertions.assertAll(()->{
 				Assertions.assertDoesNotThrow(()->{
 					gestorMenus.escogerPlatos(3, 1, 1);
