@@ -192,7 +192,11 @@ class GestionMenusTest {
 			gestorMenus = null;
 			smenu = null;
 		}
-		
+		/**
+		 * Codigo de las pruebas de caja blanca asociadas al metodo escoger plato.
+		 * @author Manuel Leston
+		 *
+		 */
 		@DisplayName("Test escogerPlato (CB-Camino 1) - CP69")
 		@Test
 		void testCaminoUnoEscogerPlato() {
@@ -379,7 +383,7 @@ class GestionMenusTest {
 		}
 	
 		/**
-		 * Codigo de las pruebas de caja negra asociadas al metodo escoger plato.
+		 * Codigo de las pruebas de caja blanca para el metodo crear Menu.
 		 * @author Daniel Martinez
 		 */
 		@DisplayName("Crear Menu - CP55")
