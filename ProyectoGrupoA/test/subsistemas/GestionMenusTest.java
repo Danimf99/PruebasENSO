@@ -196,54 +196,7 @@ class GestionMenusTest {
 		@DisplayName("Test escogerPlato (CB-Camino 1) - CP69")
 		@Test
 		void testCaminoUnoEscogerPlato() {
-			//Creamos el menu para este dia
-			try {
-				gestorMenus.crearMenu("Solpor",1);
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
-			//Mockito.when(gestorMenus.obtenerMenuDelDia()).thenReturn(new Menu(1, null, new ArrayList<>(),new ArrayList<>(),new ArrayList<>()));
-			
-			
-			Assertions.assertAll(()->{
-				Exception e = Assertions.assertThrows(Exception.class, ()->{
-					gestorMenus.escogerPlatos(1, 1, 10);
-				}, "No se ha lanzado una excepcion");
-				Assertions.assertEquals("Ese plato no existe",e.getMessage(), "El mensaje de la excepcion lanzada no es el esperado");
-			});
-			
-		}
-		
-		@DisplayName("Test escogerPlato (CB-Camino 2) - CP70")
-		@Test
-		void testCaminoDosEscogerPlato() {
-			Assertions.assertAll(()->{
-				Assertions.assertDoesNotThrow(()->{
-					gestorMenus.escogerPlatos(4, 1, 3);
-				});
-			});
-			
-		}
-		
-		
-		@DisplayName("Test escogerPlato (CB-Camino 3) - CP71")
-		@Test
-		void testCaminoTresEscogerPlato() {
-			Assertions.assertAll(()->{
-				Assertions.assertDoesNotThrow(()->{
-					gestorMenus.escogerPlatos(1, 1, 3);
-				});
-			});
-			
-		}
-		
-		
-		@DisplayName("Test escogerPlato (CB-Camino 4) - CP72")
-		@Test
-		void testCaminoCuatroEscogerPlato() {
-			/*Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
 			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
 			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
 			
@@ -254,23 +207,174 @@ class GestionMenusTest {
 			pruebaPlato.add(plato3);
 			
 			Mockito.when(gestorDatos.obtenerPlatos("Albor")).thenReturn(new ArrayList<>(pruebaPlato));
-			*/
+			
+			//Creamos el menu para este dia
+			try {
+				gestorMenus.crearMenu("Albor",1);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			//Mockito.when(gestorMenus.obtenerMenuDelDia()).thenReturn(new Menu(1, null, new ArrayList<>(),new ArrayList<>(),new ArrayList<>()));
+			
+			
 			Assertions.assertAll(()->{
-				Assertions.assertDoesNotThrow(()->{
-					gestorMenus.escogerPlatos(1, 1, 1);
-				});
+				Exception e = Assertions.assertThrows(Exception.class, ()->{
+					gestorMenus.escogerPlatos(1, 3, 1);
+				}, "No se ha lanzado una excepcion");
+				Assertions.assertEquals("Ese menu aun no esta creado",e.getMessage(), "El mensaje de la excepcion lanzada no es el esperado");
 			});
+			
+		}
+		
+		@DisplayName("Test escogerPlato (CB-Camino 2) - CP70")
+		@Test
+		void testCaminoDosEscogerPlato() {
+			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
+			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
+			
+			ArrayList<Plato> platos = new ArrayList<>();
+			ArrayList<Plato> pruebaPlato = new ArrayList<>();
+			pruebaPlato.add(plato1);
+			pruebaPlato.add(plato2);
+			pruebaPlato.add(plato3);
+			
+			Mockito.when(gestorDatos.obtenerPlatos("Albor")).thenReturn(new ArrayList<>(pruebaPlato));
+			
+			//Creamos el menu para este dia
+			try {
+				gestorMenus.crearMenu("Albor",1);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
+			Assertions.assertAll(()->{
+				Exception e = Assertions.assertThrows(Exception.class, ()->{
+					gestorMenus.escogerPlatos(5, 1, 1);
+				}, "No se ha lanzado una excepcion");
+				Assertions.assertEquals("Ese plato no existe",e.getMessage(), "El mensaje de la excepcion lanzada no es el esperado");
+			});
+			
+		}
+		
+		
+		@DisplayName("Test escogerPlato (CB-Camino 3) - CP71")
+		@Test
+		void testCaminoTresEscogerPlato() {
+			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato2 = new Plato(4, "pollo", "pollo", null, 2, null, null);
+			Plato plato3 = new Plato(7, "tarta", "tartas", null, 3, null, null);
+			
+			ArrayList<Plato> platos = new ArrayList<>();
+			ArrayList<Plato> pruebaPlato = new ArrayList<>();
+			pruebaPlato.add(plato1);
+			pruebaPlato.add(plato2);
+			pruebaPlato.add(plato3);
+			
+			Mockito.when(gestorDatos.obtenerPlatos("Albor")).thenReturn(new ArrayList<>(pruebaPlato));
+			
+			//Creamos el menu para este dia
+			try {
+				gestorMenus.crearMenu("Albor",1);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			Assertions.assertAll(()->{
+				Exception e = Assertions.assertThrows(Exception.class, ()->{
+					gestorMenus.escogerPlatos(1, 1, 3);
+				}, "No se ha lanzado una excepcion");
+				Assertions.assertEquals("Ese plato no es del tipo de plato solicitado",e.getMessage(), "El mensaje de la excepcion lanzada no es el esperado");
+			});
+		}
+		
+		
+		@DisplayName("Test escogerPlato (CB-Camino 4) - CP72")
+		@Test
+		void testCaminoCuatroEscogerPlato() {
+			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato2 = new Plato(2, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato3 = new Plato(3, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato4 = new Plato(4, "pollo", "pollo", null, 2, null, null);
+			Plato plato5 = new Plato(5, "pollo", "pollo", null, 2, null, null);
+			Plato plato6 = new Plato(6, "pollo", "pollo", null, 2, null, null);
+			Plato plato7 = new Plato(7, "tarta", "tartas", null, 3, null, null);
+			Plato plato8 = new Plato(8, "tarta", "tartas", null, 3, null, null);
+			Plato plato9 = new Plato(9, "tarta", "tartas", null, 3, null, null);
+			
+			ArrayList<Plato> platos = new ArrayList<>();
+			ArrayList<Plato> pruebaPlato = new ArrayList<>();
+			pruebaPlato.add(plato1);
+			pruebaPlato.add(plato2);
+			pruebaPlato.add(plato3);
+			pruebaPlato.add(plato4);
+			pruebaPlato.add(plato5);
+			pruebaPlato.add(plato6);
+			pruebaPlato.add(plato7);
+			pruebaPlato.add(plato8);
+			pruebaPlato.add(plato9);
+			
+			Mockito.when(gestorDatos.obtenerPlatos("Albor")).thenReturn(new ArrayList<>(pruebaPlato));
+			
+			//Creamos el menu para este dia
+			try {
+				gestorMenus.crearMenu("Albor",1);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
+			Assertions.assertDoesNotThrow(() -> {
+				gestorMenus.escogerPlatos(1, 1, 1);
+			}, "Ha habido una excepcion");
 			
 		}
 		
 		@DisplayName("Test escogerPlato (CB-Camino 5) - CP73")
 		@Test
 		void testCaminCincoEscogerPlato() {
-			Assertions.assertAll(()->{
-				Assertions.assertDoesNotThrow(()->{
-					gestorMenus.escogerPlatos(3, 1, 1);
-				});
-			});
+			Plato plato1 = new Plato(1, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato2 = new Plato(2, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato3 = new Plato(3, "ensalada", "Ensalada", null, 1, null, null);
+			Plato plato4 = new Plato(4, "pollo", "pollo", null, 2, null, null);
+			Plato plato5 = new Plato(5, "pollo", "pollo", null, 2, null, null);
+			Plato plato6 = new Plato(6, "pollo", "pollo", null, 2, null, null);
+			Plato plato7 = new Plato(7, "tarta", "tartas", null, 3, null, null);
+			Plato plato8 = new Plato(8, "tarta", "tartas", null, 3, null, null);
+			Plato plato9 = new Plato(9, "tarta", "tartas", null, 3, null, null);
+			
+			ArrayList<Plato> platos = new ArrayList<>();
+			ArrayList<Plato> pruebaPlato = new ArrayList<>();
+			pruebaPlato.add(plato1);
+			pruebaPlato.add(plato2);
+			pruebaPlato.add(plato3);
+			pruebaPlato.add(plato4);
+			pruebaPlato.add(plato5);
+			pruebaPlato.add(plato6);
+			pruebaPlato.add(plato7);
+			pruebaPlato.add(plato8);
+			pruebaPlato.add(plato9);
+			
+			Mockito.when(gestorDatos.obtenerPlatos("Albor")).thenReturn(new ArrayList<>(pruebaPlato));
+			
+			//Creamos el menu para este dia
+			try {
+				gestorMenus.crearMenu("Albor",1);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
+			Assertions.assertDoesNotThrow(() -> {
+				gestorMenus.escogerPlatos(4, 1, 2);
+			}, "Ha habido una excepcion");
 			
 		}
 	
