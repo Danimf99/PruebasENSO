@@ -332,6 +332,238 @@ class GestionAnalisisEstadisticasImplTest {
 					()->{assertNotNull(plato.getConcesionaria(),"Se esperaba un string");}
 			);
 		}
+		
+		@DisplayName("Obtener plato mejor valorado - Camino 1 - CP84")
+		@Test
+		void testCaminoUnoMejorPlato(){
+			
+			Mockito.when(gestorDatos.obtenerBases()).thenReturn(new ArrayList<BaseEstadistica>());
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(new ArrayList<Factura>());
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(new ArrayList<Plato>());
+			
+			assertEquals(gestorEst.obtenerPlatoMejorValorado(), null, "Se esperaba un null");
+			
+		}
+		
+		@DisplayName("Obtener plato mejor valorado - Camino 2 - CP85")
+		@Test
+		void testCaminoDosMejorPlato(){
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<BaseEstadistica> bases = gestorDatosAux.obtenerBases();
+			
+			// Hacer con Mokito
+			for(BaseEstadistica base : bases) {
+				base.setValoraciones(new ArrayList());
+			}
+			
+			Mockito.when(gestorDatos.obtenerBases()).thenReturn(bases);
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(new ArrayList<Factura>());
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(new ArrayList<Plato>());
+			
+			assertEquals(gestorEst.obtenerPlatoMejorValorado(), null, "Se esperaba un null");
+			
+		}
+
+		@DisplayName("Obtener plato mejor valorado - Camino 3 - CP86")
+		@Test
+		void testCaminoTresMejorPlato(){
+			
+			Plato platoObjeto = new Plato(1, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<Plato> platos = gestorDatosAux.obtenerPlatos();
+			ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+			
+			Mockito.when(gestorDatos.obtenerBases()).thenReturn(new ArrayList<BaseEstadistica>());
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(new ArrayList<Factura>());
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(platos);
+			
+			Plato plato = gestorEst.obtenerPlatoMejorValorado();
+			
+			// Comprobar que es el primer plato
+			assertAll(
+					()->{assertEquals(platoObjeto.getClass(), plato.getClass(), "Se esperaba un plato");},
+					()->{assertTrue(plato.getId() >= 1,"Se esperaba que el id fuera un numero natural");},
+					()->{assertTrue(plato.getCategoriaPlato() >= 1,"Se esperaba que la categoria del plato fuera un numero natural");},
+					()->{assertEquals(plato.getIngredientes().getClass(), ingredientes.getClass(),"Se esperaba un ArrayList de ingredientes");},
+					()->{assertNotNull(plato.getTipoCocina(), "Se esperaba un string");},
+					()->{assertNotNull(plato.getDescripcion(),"Se esperaba un string");},
+					()->{assertNotNull(plato.getConcesionaria(),"Se esperaba un string");}
+			);
+			
+		}
+		
+		@DisplayName("Obtener plato mejor valorado - Camino 4 - CP87")
+		@Test
+		void testCaminoCuatroMejorPlato(){
+			
+			Plato platoObjeto = new Plato(1, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<Factura> facturas = gestorDatosAux.obtenerFacturas();
+			
+			Mockito.when(gestorDatos.obtenerBases()).thenReturn(new ArrayList<BaseEstadistica>());
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(facturas);
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(new ArrayList<Plato>());
+			
+			assertEquals(gestorEst.obtenerPlatoMejorValorado(), null, "Se esperaba un null");
+			
+		}
+		
+		@DisplayName("Obtener plato mejor valorado - Camino 5 - CP88")
+		@Test
+		void testCaminoCincoMejorPlato(){
+			
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<Factura> facturas = gestorDatosAux.obtenerFacturas();
+			ArrayList<BaseEstadistica> bases = gestorDatosAux.obtenerBases();
+			
+
+			Mockito.when(gestorDatos.obtenerBases()).thenReturn(bases);
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(facturas);
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(new ArrayList<Plato>());
+			
+			assertEquals(gestorEst.obtenerPlatoMejorValorado(), null, "Se esperaba un null");
+		}
+		
+		@DisplayName("Obtener plato mejor valorado - Camino 6 - CP89")
+		@Test
+		void testCaminoSeisMejorPlato(){
+			
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<Factura> facturas = gestorDatosAux.obtenerFacturas();
+			ArrayList<BaseEstadistica> bases = gestorDatosAux.obtenerBases();
+			
+			// Hacer con Mokito
+			for(BaseEstadistica base : bases) {
+				base.setValoraciones(new ArrayList());
+			}
+			
+			Mockito.when(gestorDatos.obtenerBases()).thenReturn(bases);
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(facturas);
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(new ArrayList<Plato>());
+			
+			assertEquals(gestorEst.obtenerPlatoMejorValorado(), null, "Se esperaba un null");
+		}
+		
+		@DisplayName("Obtener plato mejor valorado - Camino 7 - CP90")
+		@Test
+		void testCaminoSieteMejorPlato(){
+			
+			Plato platoObjeto = new Plato(1, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<Factura> facturas = gestorDatosAux.obtenerFacturas();
+			ArrayList<BaseEstadistica> bases = gestorDatosAux.obtenerBases();
+			ArrayList<Plato> platos = gestorDatosAux.obtenerPlatos();
+			ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+			
+
+			Mockito.when(gestorDatos.obtenerBases()).thenReturn(bases);
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(facturas);
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(platos);
+			
+			Plato plato = gestorEst.obtenerPlatoMejorValorado();
+			
+			// Comprobar que es el peor valorado
+			assertAll(
+					()->{assertEquals(platoObjeto.getClass(), plato.getClass(), "Se esperaba un plato");},
+					()->{assertTrue(plato.getId() >= 1,"Se esperaba que el id fuera un numero natural");},
+					()->{assertTrue(plato.getCategoriaPlato() >= 1,"Se esperaba que la categoria del plato fuera un numero natural");},
+					()->{assertEquals(plato.getIngredientes().getClass(), ingredientes.getClass(),"Se esperaba un ArrayList de ingredientes");},
+					()->{assertNotNull(plato.getTipoCocina(), "Se esperaba un string");},
+					()->{assertNotNull(plato.getDescripcion(),"Se esperaba un string");},
+					()->{assertNotNull(plato.getConcesionaria(),"Se esperaba un string");}
+			);
+		}
+		
+		@DisplayName("Obtener plato mejor valorado - Camino 8 - CP91")
+		@Test
+		void testCaminoOchoMejorPlato(){
+			
+			Plato platoObjeto = new Plato(1, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<Factura> facturas = gestorDatosAux.obtenerFacturas();
+			ArrayList<BaseEstadistica> bases = gestorDatosAux.obtenerBases();
+			ArrayList<Plato> platos = gestorDatosAux.obtenerPlatos();
+			ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+			
+			// Hacer con Mokito
+			for(BaseEstadistica base : bases) {
+				base.setValoraciones(new ArrayList());
+			}
+
+			Mockito.when(gestorDatos.obtenerBases()).thenReturn(bases);
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(facturas);
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(platos);
+			
+
+			Plato plato = gestorEst.obtenerPlatoMejorValorado();
+			
+			// Comprobar que es el primer plato
+			assertAll(
+					()->{assertEquals(platoObjeto.getClass(), plato.getClass(), "Se esperaba un plato");},
+					()->{assertTrue(plato.getId() >= 1,"Se esperaba que el id fuera un numero natural");},
+					()->{assertTrue(plato.getCategoriaPlato() >= 1,"Se esperaba que la categoria del plato fuera un numero natural");},
+					()->{assertEquals(plato.getIngredientes().getClass(), ingredientes.getClass(),"Se esperaba un ArrayList de ingredientes");},
+					()->{assertNotNull(plato.getTipoCocina(), "Se esperaba un string");},
+					()->{assertNotNull(plato.getDescripcion(),"Se esperaba un string");},
+					()->{assertNotNull(plato.getConcesionaria(),"Se esperaba un string");}
+			);
+		}
+		
+		@DisplayName("Obtener plato mejor valorado - Camino 9 - CP92")
+		@Test
+		void testCaminoNueveMejorPlato(){
+			
+			Plato platoObjeto = new Plato(1, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<Factura> facturas = gestorDatosAux.obtenerFacturas();
+			ArrayList<Plato> platos = gestorDatosAux.obtenerPlatos();
+			ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+
+			Mockito.when(gestorDatos.obtenerBases()).thenReturn(new ArrayList<BaseEstadistica>());
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(facturas);
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(platos);
+			
+			Plato plato = gestorEst.obtenerPlatoMejorValorado();
+			
+			// Comprobar que es el primer plato
+			assertAll(
+					()->{assertEquals(platoObjeto.getClass(), plato.getClass(), "Se esperaba un plato");},
+					()->{assertTrue(plato.getId() >= 1,"Se esperaba que el id fuera un numero natural");},
+					()->{assertTrue(plato.getCategoriaPlato() >= 1,"Se esperaba que la categoria del plato fuera un numero natural");},
+					()->{assertEquals(plato.getIngredientes().getClass(), ingredientes.getClass(),"Se esperaba un ArrayList de ingredientes");},
+					()->{assertNotNull(plato.getTipoCocina(), "Se esperaba un string");},
+					()->{assertNotNull(plato.getDescripcion(),"Se esperaba un string");},
+					()->{assertNotNull(plato.getConcesionaria(),"Se esperaba un string");}
+			);
+		}
+		
+		@DisplayName("Obtener plato mejor valorado - Camino 10 - CP93")
+		@Test
+		void testCaminoDiezMejorPlato(){
+			
+			Plato platoObjeto = new Plato(1, "ensalada", "Ensalada rica rica", null, 1, null, null);
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<BaseEstadistica> bases = gestorDatosAux.obtenerBases();
+			ArrayList<Plato> platos = gestorDatosAux.obtenerPlatos();
+			ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+
+			Mockito.when(gestorDatos.obtenerBases()).thenReturn(bases);
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(new ArrayList<Factura>());
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(platos);
+			
+			Plato plato = gestorEst.obtenerPlatoMejorValorado();
+			
+			// Comprobar que es el primer plato
+			assertAll(
+					()->{assertEquals(platoObjeto.getClass(), plato.getClass(), "Se esperaba un plato");},
+					()->{assertTrue(plato.getId() >= 1,"Se esperaba que el id fuera un numero natural");},
+					()->{assertTrue(plato.getCategoriaPlato() >= 1,"Se esperaba que la categoria del plato fuera un numero natural");},
+					()->{assertEquals(plato.getIngredientes().getClass(), ingredientes.getClass(),"Se esperaba un ArrayList de ingredientes");},
+					()->{assertNotNull(plato.getTipoCocina(), "Se esperaba un string");},
+					()->{assertNotNull(plato.getDescripcion(),"Se esperaba un string");},
+					()->{assertNotNull(plato.getConcesionaria(),"Se esperaba un string");}
+			);
+		}
 
 	}
 	
