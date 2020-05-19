@@ -96,6 +96,104 @@ class GestionAnalisisEstadisticasImplTest {
 			gestorEst = null;
 			gestorDatos = null;
 		}
+		
+		/**
+		 * Pruebas para obtener plato más seleccionado
+		 * @author Pablo Martinez
+		 *
+		 */
+		@DisplayName("Obtener plato mas seleccionado - Camino 1 - CP61")
+		@Test
+		void testCaminoUnoPlatoMasSeleccionado(){
+			
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(new ArrayList<Factura>());
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(new ArrayList<Plato>());
+			
+			assertEquals(gestorEst.obtenerPlatoMasSeleccionado(), null, "Se esperaba un null");
+			
+		}
+		
+		@DisplayName("Obtener plato mas seleccionado - Camino 2 - CP62")
+		@Test
+		void testCaminoDosPlatoMasSeleccionado(){
+			
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<Factura> facturas = gestorDatosAux.obtenerFacturas();
+			
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(facturas);
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(new ArrayList<Plato>());
+			
+			assertEquals(gestorEst.obtenerPlatoMasSeleccionado(), null, "Se esperaba un null");
+			
+		}
+		
+		@DisplayName("Obtener plato mas seleccionado - Camino 3 - CP63")
+		@Test
+		void testCaminoTresPlatoMasSeleccionado(){
+			
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<Plato> platos = gestorDatosAux.obtenerPlatos();
+			
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(new ArrayList<Factura>());
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(platos);
+			
+			assertEquals(gestorEst.obtenerPlatoMasSeleccionado(), null, "Se esperaba un null");
+			
+		}
+		
+		
+		@DisplayName("Obtener plato mas seleccionado - Camino 4 - CP64")
+		@Test
+		void testCaminoCuatroPlatoMasSeleccionado(){
+			
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<Plato> platos = gestorDatosAux.obtenerPlatos();
+			ArrayList<Factura> facturas = gestorDatosAux.obtenerFacturas();
+			
+			for (Factura f: facturas) {
+				f.setPlato1(-1);
+				f.setPlato2(-1);
+				f.setPostre(-1);
+			}
+			
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(facturas);
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(platos);
+			
+			assertEquals(gestorEst.obtenerPlatoMasSeleccionado(), null, "Se esperaba un null");
+			
+			
+			
+		}
+		
+		
+		@DisplayName("Obtener plato mas seleccionado - Camino 5 - CP65")
+		@Test
+		void testCaminoCincoPlatoMasSeleccionado(){
+			
+			GestionDatosImpl gestorDatosAux = new GestionDatosImpl();
+			ArrayList<Plato> platos = gestorDatosAux.obtenerPlatos();
+			ArrayList<Factura> facturas = gestorDatosAux.obtenerFacturas();
+			
+			
+			Mockito.when(gestorDatos.obtenerFacturas()).thenReturn(facturas);
+			Mockito.when(gestorDatos.obtenerPlatos()).thenReturn(platos);
+			
+			Plato plato = gestorEst.obtenerPlatoMasSeleccionado();
+			
+					
+					
+			// Comprobar que es el plato más seleccinado
+			assertAll(
+					()->{assertEquals(plato.getClass(), Plato.class, "Se esperaba un plato");},
+					()->{assertTrue(plato.getId() >= 1,"Se esperaba que el id fuera un numero natural");},
+					()->{assertTrue(plato.getCategoriaPlato() >= 1,"Se esperaba que la categoria del plato fuera un numero natural");},
+					()->{assertEquals(plato.getIngredientes().getClass(), new ArrayList<Ingrediente>().getClass(),"Se esperaba un ArrayList de ingredientes");},
+					()->{assertNotNull(plato.getTipoCocina(), "Se esperaba un string");},
+					()->{assertNotNull(plato.getDescripcion(),"Se esperaba un string");},
+					()->{assertNotNull(plato.getConcesionaria(),"Se esperaba un string");}
+			);
+			
+		}
 		/**
 		 * Pruebas para obtener lato peor valorado
 		 * @author Alba Mart�nez
